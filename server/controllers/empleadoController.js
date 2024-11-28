@@ -22,7 +22,6 @@ export const obtenerEmpleados = async (req, res) => {
     const limit = parseInt(req.query.limit) || 10;  // Cantidad de empleados por página, por defecto 10
     const skip = (page - 1) * limit;
 
-    // Si los parámetros de paginación no se pasan, obtenemos todos los empleados
     const empleados = await Empleado.find().skip(skip).limit(limit);
     const totalEmpleados = await Empleado.countDocuments();
     const totalPages = Math.ceil(totalEmpleados / limit);
